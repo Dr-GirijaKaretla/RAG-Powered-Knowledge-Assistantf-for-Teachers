@@ -1,0 +1,50 @@
+# ════════════════════════════════════════════════════════════
+# Teacher's AI Knowledge Assistant — Configuration
+# ════════════════════════════════════════════════════════════
+
+# ── Ingestion ─────────────────────────────────────────────
+ingestion:
+  supported_formats: ["pdf", "docx", "txt"]
+  max_file_size_mb: 20
+
+# ── Chunking ──────────────────────────────────────────────
+chunking:
+  chunk_size: 512
+  chunk_overlap: 64
+  chunking_strategy: "recursive"   # options: fixed, recursive, semantic
+
+# ── Embedding ─────────────────────────────────────────────
+embedding:
+  embedding_model: "all-MiniLM-L6-v2"
+  embedding_device: "cpu"
+  batch_size: 32
+
+# ── Vector Store ──────────────────────────────────────────
+vectorstore:
+  vectorstore_path: "./vectorstore_data"
+  collection_name: "teacher_knowledge_base"
+
+# ── Retrieval ─────────────────────────────────────────────
+retrieval:
+  top_k: 5
+  rerank: true
+  reranker_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  similarity_threshold: 0.3
+
+# ── Generation ────────────────────────────────────────────
+generation:
+  generation_model: "google/flan-t5-large"
+  fallback_model: "facebook/bart-large-cnn"
+  max_new_tokens: 512
+  temperature: 0.3
+  do_sample: false
+
+# ── Quiz ──────────────────────────────────────────────────
+quiz:
+  quiz_num_questions: 5
+  quiz_difficulty: "medium"    # easy, medium, hard
+
+# ── App ───────────────────────────────────────────────────
+app:
+  app_title: "📚 Teacher's AI Knowledge Assistant"
+  max_chat_history: 20
