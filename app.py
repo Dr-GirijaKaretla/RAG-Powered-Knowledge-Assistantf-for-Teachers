@@ -8,6 +8,23 @@ runs 100 % locally via HuggingFace models.
 
 from __future__ import annotations
 
+# ──────────────────────────────────────────────────────────────
+# Silence noisy third-party warnings before any heavy imports.
+# This prevents transformers / torch from flooding Railway's log
+# pipeline (rate-limited at 500 logs/sec) during startup.
+# ──────────────────────────────────────────────────────────────
+import os
+import warnings
+
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", message=".*Torch was not compiled with flash attention.*")
+
+# Suppress TensorFlow C++ logging (0=all, 1=INFO, 2=WARNING, 3=ERROR)
+os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")
+# Tell transformers not to emit tokenizer parallelism warnings
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+
 import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional

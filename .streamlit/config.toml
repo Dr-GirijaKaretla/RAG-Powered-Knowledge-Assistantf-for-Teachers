@@ -1,0 +1,14 @@
+[server]
+# Disable the file watcher entirely — it scans all imported modules
+# (including every transformers model file) on startup, generating
+# thousands of error logs per second on Railway and triggering the
+# 500 logs/sec rate-limit crash.
+fileWatcherType = "none"
+
+[client]
+showErrorDetails = false
+toolbarMode = "minimal"
+
+[logger]
+# Suppress Streamlit's own verbose startup/debug output.
+level = "warning"

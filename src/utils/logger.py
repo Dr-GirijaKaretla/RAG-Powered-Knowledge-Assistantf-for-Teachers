@@ -21,7 +21,7 @@ _configured_loggers: dict[str, logging.Logger] = {}
 
 def setup_logger(
     name: str,
-    level: Optional[int] = logging.INFO,
+    level: Optional[int] = logging.WARNING,
 ) -> logging.Logger:
     """Return a configured :class:`logging.Logger` for *name*.
 
