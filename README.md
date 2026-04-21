@@ -1,5 +1,7 @@
 # 📚 Teacher's AI Knowledge Assistant
 
+Link: https://rag-powered-knowledge-assistantf-for-teachers-production-f346.up.railway.app/
+
 > **A RAG-powered (Retrieval-Augmented Generation) web application** that helps teachers upload educational documents, ask natural language questions, generate quizzes, and receive accurate, source-cited answers — all running **100% locally** with no paid API keys.
 
 ---
